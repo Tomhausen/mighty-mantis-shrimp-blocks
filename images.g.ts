@@ -243,6 +243,44 @@ f e b b e f f e f e e f e e e f
 f f e e e e e f f e e f f f f f 
 f f f f e e f f f f f f f f f f 
 `;
+            case "image10":
+            case "moving platform":return img`
+. . e e b b b b b b b b e e . . 
+. e b b b b b b b b b b b b e . 
+e b b b b b b b b b b b b b b e 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b e e e b b b b b b b b 
+e e b e e e e b b b e e b b b e 
+f b e e b b e b b b e e e e e b 
+f e e e b b e e e f f b b e b f 
+. f b b e f f e f e e f e e e . 
+. . f e e e e f f e e f f f . . 
+. . . f f e f f f f f f f . . . 
+`;
+            case "image9":
+            case "shark":return img`
+.............ccfff..............
+...........ccddbcf..............
+..........ccddbbf...............
+..........fccbbcf...............
+.....fffffccccccff.........ccc..
+...ffbbbbbbbcbbbbcfff....ccbbc..
+..fbbbbbbbbcbcbbbbcccff.cdbbc...
+ffbbbbbbffbbcbcbbbcccccfcdbbf...
+fbcbbb11ff1bcbbbbbcccccffbbf....
+fbbb11111111bbbbbcccccccbbcf....
+.fb11133cc11bbbbcccccccccccf....
+..fccc31c111bbbcccccbdbffbbcf...
+...fc13c111cbbbfcddddcc..fbbf...
+....fccc111fbdbbccdcc.....fbbf..
+........ccccfcdbbcc........fff..
+.............fffff..............
+`;
         }
         return null;
     })

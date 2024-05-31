@@ -176,6 +176,30 @@
         ],
         "displayName": "level 1"
     },
+    "level5": {
+        "id": "level5",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAxMDAwMWIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA0MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDYwOTAxMDAwMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwNzA3MGEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDUwZDAwMDAwMDAwMDAwMTAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDAwMDBkMDAwMDAwMDAwZDAwMDAwZDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwMDAwYjAzMDMwOTAwMDAwMDAwMGQwMDAwMDAwMDBkMDAwMDBjMDcwNzBhMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBkMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMDAwMDAwMDAwZDA1MDAwMDAwMDAwMDAwMGIwNjA2MDYwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDAwYzA3MDcwNzAwMDAwZDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwNjA2MDYwOTAwMDAwMDAwMDAwNTBkMDAwMDAwMDEwMDA3MDcwNzBhMDAwMDAwMDAwMDAwMDAwMDAwMGUwZjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBlMGYwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwZTBmMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwYjAzMDMwOTAwMDAwMDAwMGUwZjAwMDAwMDAwMDAwMDBjMDcwNzBhMDIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwODA4MDgwODA4MDgwODA4MDgwODA4MDgwODA4MDgwODAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAyMjAwMDAwMDAwMDAwMDAwMjIwMjAwMDAwMDAwMDAyMDAwMDAwMDAwMDAwMDAwMDAwMDAwMjAwMDAwMDIyMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIyMDAwMDAwMjAwMjAwMDIyMjIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIwMDAwMDAyMjIyMDAwMDAwMDAwMDAwMjIyMjAwMDIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMjIyMjAwMDAwMDAyMDAwMDIyMjIwMDAwMDAwMDIwMDIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIyMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAyMDAyMDAwMDAwMDAwMDAwMDAwMDAwMDIyMDAwMDAyMjAwMDAwMDIyMjIwMDAwMDAwMDAwMDAwMDAwMjIyMjIyMjIyMjIyMjIyMg==",
+        "tileset": [
+            "myTiles.transparency16",
+            "myTiles.tile1",
+            "myTiles.tile2",
+            "myTiles.tile3",
+            "myTiles.tile4",
+            "myTiles.tile6",
+            "sprites.builtin.oceanSand6",
+            "sprites.builtin.oceanSand14",
+            "sprites.builtin.oceanSand2",
+            "sprites.builtin.oceanSand7",
+            "sprites.builtin.oceanSand15",
+            "sprites.builtin.oceanSand5",
+            "sprites.builtin.oceanSand13",
+            "sprites.builtin.oceanSand0",
+            "sprites.builtin.oceanSand1",
+            "sprites.builtin.oceanSand3"
+        ],
+        "displayName": "level 4"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",

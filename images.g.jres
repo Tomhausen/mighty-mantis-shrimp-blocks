@@ -39,6 +39,16 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "breakable rock"
     },
+    "image10": {
+        "data": "hwQQABAAAAAAvru7u/4PAOC7u7u7vv4Avru7u7vrvg++u7u7u+6+/ru7u7u7vuv+u7u7u+u+++67u7u76+7+/ru7u7vru+7/u7u7u7u7/v+7u7u7u7vv/ru7u7u77u/+u7u7u7vu+/++u7u7u+vr/767u7u76+4P4Lu7u7vr6wAAvru7u74PAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "moving platform"
+    },
+    "image9": {
+        "data": "hwQgABAAAAAAAADw/wAAAAAAAPC7DwAAAAAAv7z7AAAAAPC7u8EPAAAA8LsbwfwAAAC/uxvBwQAAAL+7ETPDAAAAv7sRE8wAAAC/+x/MEQwAAL/7HxwRDAD8vLsREREMwMy8vBsR/AzAzczLvLu7D9y9vLy7u9v83Lu8y7u7u/2/y7y7u8u/+8//v7u7zMz7/wDPu8vMzfwAAPDMzMzdDAAA8MzMzM0AAADwzMy8zQAAAADPzNwMAAAAAM/MvAwAAAAA8M/8AAAAAADMv/wAAAAAwN27vA8AAADAu8u8+wAAALy7/8+7DwAAvPwA8L8PAADMAAAA8A8AAAAAAAAAAAAAAAAAAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "shark"
+    },
     "anim2": {
         "namespace": "myAnimations",
         "id": "anim2",

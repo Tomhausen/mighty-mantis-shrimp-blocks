@@ -1,6 +1,9 @@
 namespace SpriteKind {
     export const Enemy_Projectile = SpriteKind.create()
     export const Effect = SpriteKind.create()
+    export const Moving_platform = SpriteKind.create()
+    export const Platform_hitbox = SpriteKind.create()
+    export const Floating_enemy = SpriteKind.create()
 }
 function x_movement () {
     if (controller.left.isPressed()) {
@@ -18,11 +21,42 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         jump_count += 1
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Floating_enemy, function (sprite, otherSprite) {
+    timer.throttle("take damage", 1000, function () {
+        take_damage()
+    })
+})
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite, location) {
     timer.throttle("take damage", 1000, function () {
         take_damage()
     })
 })
+function make_moving_platforms () {
+    for (let value of tiles.getTilesByType(myTiles.tile6)) {
+        platform = sprites.create(assets.image`moving platform`, SpriteKind.Moving_platform)
+        tiles.placeOnTile(platform, value)
+        tiles.setTileAt(value, myTiles.transparency16)
+        platform.setFlag(SpriteFlag.BounceOnWall, true)
+        platform.vx = 30
+        hitbox = sprites.create(image.create(16, 4), SpriteKind.Platform_hitbox)
+        sprites.setDataSprite(hitbox, "platform", platform)
+        hitbox.image.fill(1)
+        platform.setFlag(SpriteFlag.Invisible, true)
+    }
+}
+function shark_behaviour () {
+    for (let value of sprites.allOfKind(SpriteKind.Floating_enemy)) {
+        if (value.left > tilesAdvanced.getTilemapWidth() * 16) {
+            sprites.destroy(value)
+        }
+        if (value.right < 0) {
+            sprites.destroy(value)
+        }
+        start_y = sprites.readDataNumber(value, "start y")
+        angle = value.x / 20
+        shark.y = Math.sin(angle) * 20 + start_y
+    }
+}
 function animate_lava () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Effect)
     for (let value of tiles.getTilesByType(myTiles.tile3)) {
@@ -85,7 +119,31 @@ function load_level () {
         tiles.setTileAt(value, myTiles.transparency16)
     }
     animate_lava()
+    make_moving_platforms()
+    database.setNumberValue("level", level)
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Moving_platform, function (sprite, otherSprite) {
+    x_dif = otherSprite.x - sprite.x
+    y_dif = otherSprite.y - sprite.y
+    if (Math.abs(x_dif) > Math.abs(y_dif)) {
+        sprite.vx = 0
+        while (sprite.overlapsWith(otherSprite)) {
+            sprite.x += -1 * (x_dif / Math.abs(x_dif))
+            pause(0)
+        }
+    } else {
+        sprite.vy = 0
+        while (sprite.overlapsWith(otherSprite)) {
+            sprite.y += -1 * (y_dif / Math.abs(y_dif))
+            pause(0)
+        }
+    }
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Floating_enemy, function (sprite, otherSprite) {
+    info.changeScoreBy(10)
+    sprites.destroy(sprite)
+    sprites.destroy(otherSprite)
+})
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, function (sprite, location) {
     if (level == levels.length) {
         game.gameOver(true)
@@ -120,8 +178,36 @@ function urchin_fire (urchin: Sprite) {
         vx += 100
     }
 }
+function use_moving_platform () {
+    for (let value of sprites.allOfKind(SpriteKind.Platform_hitbox)) {
+        platform = sprites.readDataSprite(value, "platform")
+        value.setPosition(platform.x, platform.top - 2)
+        if (shrimp.overlapsWith(value)) {
+            jump_count = 0
+            fps = 1000 / spriteutils.getDeltaTime()
+            shrimp.x += platform.vx / fps
+            shrimp.ay = 0
+            return
+        }
+    }
+    spine.ay = 325
+}
+function load_save () {
+    if (game.ask("Would you like to load your previous game?")) {
+        if (database.existsKey("level")) {
+            level = database.getNumberValue("level")
+        } else {
+            game.splash("No save file found")
+        }
+    }
+}
 function setup () {
-    levels = [tilemap`level 1`, tilemap`level 2`, tilemap`level 3`]
+    levels = [
+    tilemap`level 1`,
+    tilemap`level 2`,
+    tilemap`level 3`,
+    tilemap`level 4`
+    ]
     level = 1
     gravity = 8
     jump_count = 1
@@ -172,27 +258,52 @@ function setup_sprites () {
     )
 }
 let gravity = 0
-let angle = 0
+let fps = 0
 let spine: Sprite = null
 let vy = 0
 let vx = 0
+let y_dif = 0
+let x_dif = 0
 let urchin: Sprite = null
 let level = 0
 let levels: tiles.TileMapData[] = []
 let proj: Sprite = null
 let effect_sprite: Sprite = null
+let shark: Sprite = null
+let angle = 0
+let start_y = 0
+let hitbox: Sprite = null
+let platform: Sprite = null
 let jump_count = 0
 let facing_right = false
 let shrimp: Sprite = null
 setup_sprites()
 setup()
+load_save()
 load_level()
 game.onUpdate(function () {
     x_movement()
     y_movement()
+    use_moving_platform()
+    shark_behaviour()
 })
 game.onUpdateInterval(3000, function () {
     for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
         urchin_fire(value)
     }
+})
+game.onUpdateInterval(10000, function () {
+    shark = sprites.create(assets.image`shark`, SpriteKind.Floating_enemy)
+    if (randint(0, 1) < 1) {
+        shark.image.flipX()
+        shark.right = 1
+        shark.vx = 50
+    } else {
+        shark.left = tilesAdvanced.getTilemapWidth() * 16
+        shark.left += -1
+        shark.vx = -50
+    }
+    shark.y = shrimp.y
+    sprites.setDataNumber(shark, "start y", shark.y)
+    shark.setFlag(SpriteFlag.GhostThroughWalls, true)
 })
