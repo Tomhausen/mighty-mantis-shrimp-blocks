@@ -24,6 +24,7 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite, location
     })
 })
 function animate_lava () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Effect)
     for (let value of tiles.getTilesByType(myTiles.tile3)) {
         effect_sprite = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -77,6 +78,7 @@ function load_level () {
     tiles.setCurrentTilemap(levels[level - 1])
     tiles.placeOnRandomTile(shrimp, myTiles.tile2)
     tiles.setTileAt(shrimp.tilemapLocation(), myTiles.tile7)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
     for (let value of tiles.getTilesByType(myTiles.tile1)) {
         urchin = sprites.create(assets.image`urchin`, SpriteKind.Enemy)
         tiles.placeOnTile(urchin, value)
